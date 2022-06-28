@@ -1,0 +1,13 @@
+venv
+.pyc
+.env
+off_packages/
+*.tgz
+.ipynb_checkpoints
+.DS_Store
+__pycache__/
+*.html
+*.csv
+*.txt
+.vscode
+venv-win
