@@ -49,7 +49,7 @@ def create_container():
         blob_service_client = BlobServiceClient.from_connection_string(connect_str)
 
         # Create a unique name for the container
-        container_name = "novo-container2"
+        container_name = "container-renato"
 
         # Create the container
         container_client = blob_service_client.create_container(container_name)
