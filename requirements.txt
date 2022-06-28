@@ -1,4 +1,5 @@
 azure-core==1.24.1
+azure-functions==1.11.2
 azure-storage-blob==12.12.0
 black==22.6.0
 certifi==2022.6.15
