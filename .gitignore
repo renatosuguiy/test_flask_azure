@@ -8,5 +8,6 @@ off_packages/
 __pycache__/
 *.html
 *.csv
-.vscode
+
 venv-win
+.python_packages
