@@ -4,7 +4,7 @@ from flask import jsonify
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
-
+# sending a email using sendgrip api
 def send_email():
     message = Mail(
         from_email="renato.suguiy@pucpr.edu.br",
