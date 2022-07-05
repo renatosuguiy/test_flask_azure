@@ -1,11 +1,9 @@
+from flask import jsonify
 from azure.identity import DefaultAzureCredential
 from azure.keyvault.keys import KeyClient
-from dotenv import load_dotenv
-from flask import jsonify
 
 
 def create_key():
-    load_dotenv()
     credential = DefaultAzureCredential()
 
     key_client = KeyClient(
@@ -26,7 +24,6 @@ def create_key():
 
 
 def retrive_key():
-    load_dotenv()
     credential = DefaultAzureCredential()
 
     key_client = KeyClient(

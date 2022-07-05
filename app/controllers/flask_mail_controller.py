@@ -4,8 +4,6 @@ from flask import current_app
 
 def flask_email():
     mail = Mail(current_app)
-    print(current_app.config["MAIL_USERNAME"])
-    print(current_app.config["MAIL_PASSWORD"])
     msg = Message(
         "Hello",
         sender="renato.suguiy@pucpr.edu.br",
