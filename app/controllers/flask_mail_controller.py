@@ -1,10 +1,9 @@
-import base64
 from flask_mail import Mail, Message
-from flask import current_app, render_template
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+from flask import current_app
 
+import os
 from app.services.mail_generate import return_graph
+from app.services.storage_services import download_graph
 
 
 def flask_email():
@@ -20,36 +19,36 @@ def flask_email():
 
 
 def mail_graph():
-    return_graph()
-    with open("fig1.png", "rb") as image_file:
-        encoded_string = base64.b64encode(image_file.read())
-
-    template = (
-        ""
-        '<img src="cid:Myimage">'
-        "{caption}"  # Optional caption to include below the graph
-        "<br>"
-        "<hr>"
-        ""
-    )
-
-    mail = Mail(current_app)
-    msg = Message(
-        "Teste",
-        sender="renato.suguiy@pucpr.edu.br",
-        recipients=["renatosuguiy@gmail.com"],
-    )
-    _ = template.format(caption="Gráfico de exemplo")
-    msg.html = _
-    with current_app.open_resource("fig1.png") as fp:
-        msg.attach(
-            "fig1.png",
-            "image/png",
-            fp.read(),
-            "inline",
-            headers=[
-                ["Content-ID", "<Myimage>"],
-            ],
+    if download_graph():
+        template = (
+            ""
+            '<img src="cid:Myimage">'
+            "{caption}"  # Optional caption to include below the graph
+            "<br>"
+            "<hr>"
+            ""
         )
-    mail.send(msg)
-    return "sent"
+
+        mail = Mail(current_app)
+        msg = Message(
+            "Teste",
+            sender="renato.suguiy@pucpr.edu.br",
+            recipients=["renatosuguiy@gmail.com"],
+        )
+        _ = template.format(caption="Gráfico de exemplo")
+        msg.html = _
+        with current_app.open_resource("fig1.png") as fp:
+            msg.attach(
+                "fig1.png",
+                "image/png",
+                fp.read(),
+                "inline",
+                headers=[
+                    ["Content-ID", "<Myimage>"],
+                ],
+            )
+        mail.send(msg)
+        os.remove("./fig1.png")
+        return "sent"
+
+    return "Problem"
