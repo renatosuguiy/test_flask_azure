@@ -19,7 +19,9 @@ def flask_email():
 
 
 def mail_graph():
-    if download_graph():
+    file = download_graph()
+
+    if file:
         template = (
             ""
             '<img src="cid:Myimage">'
@@ -38,18 +40,16 @@ def mail_graph():
         _ = template.format(caption="Gráfico de exemplo")
         msg.html = _
 
-        with open("./fig1.png", "rb") as fp:
-            msg.attach(
-                "fig1.png",
-                "image/png",
-                fp.read(),
-                "inline",
-                headers=[
-                    ["Content-ID", "<Myimage>"],
-                ],
-            )
+        msg.attach(
+            "fig1.png",
+            "image/png",
+            file,
+            "inline",
+            headers=[
+                ["Content-ID", "<Myimage>"],
+            ],
+        )
         mail.send(msg)
-        os.remove("./fig1.png")
         return "sent"
 
     return "Problem"

@@ -21,10 +21,8 @@ def download_graph():
         blob_service_client = BlobServiceClient.from_connection_string(connect_str)
         container_name = "container-renato"
         container_client = blob_service_client.get_container_client(container_name)
-
-        with open(download_file_path, "wb") as download_file:
-            download_file.write(container_client.download_blob("fig1.png").readall())
-        return True
+        file_bytes = container_client.download_blob("fig1.png").readall()
+        return file_bytes
 
     except Exception as ex:
         print("Exception:")
