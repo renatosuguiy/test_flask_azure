@@ -18,6 +18,7 @@ def return_name(name):
 def list_files_azure():
 
     try:
+        result = []
         print("Azure Blob Storage v" + __version__ + " - Python quickstart sample")
         connect_str = os.getenv("AZURE_STORAGE_CONNECTION_STRING")
         print("\nListing blobs...")
@@ -30,8 +31,8 @@ def list_files_azure():
 
         blob_list = container_client.list_blobs()
         for blob in blob_list:
-            print(f"\n{blob.name}")
-        return jsonify({"result": "blob_list"})
+            result.append(blob.name)
+        return jsonify(result)
 
     except Exception as ex:
         print("Exception:")
