@@ -37,7 +37,8 @@ def mail_graph():
         )
         _ = template.format(caption="Gráfico de exemplo")
         msg.html = _
-        with current_app.open_resource("fig1.png") as fp:
+
+        with open("./fig1.png", "rb") as fp:
             msg.attach(
                 "fig1.png",
                 "image/png",

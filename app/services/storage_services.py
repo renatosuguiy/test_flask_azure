@@ -12,7 +12,7 @@ from azure.storage.blob import (
 def download_graph():
 
     try:
-        download_file_path = "./app/fig1.png"
+        download_file_path = "./fig1.png"
         print("Azure Blob Storage v" + __version__ + " - Python quickstart sample")
         connect_str = os.getenv("AZURE_STORAGE_CONNECTION_STRING")
 
