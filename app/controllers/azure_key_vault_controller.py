@@ -1,3 +1,5 @@
+import os
+
 from flask import jsonify
 from azure.identity import DefaultAzureCredential
 from azure.keyvault.keys import KeyClient
@@ -5,10 +7,10 @@ from azure.keyvault.keys import KeyClient
 
 def create_key():
     credential = DefaultAzureCredential()
+    keyVaultName = os.getenv("KEY_VAULT_NAME")
+    KVUri = f"https://{keyVaultName}.vault.azure.net"
 
-    key_client = KeyClient(
-        vault_url="https://test-azure.vault.azure.net/", credential=credential
-    )
+    key_client = KeyClient(vault_url=KVUri, credential=credential)
 
     # Create an RSA key
     rsa_key = key_client.create_rsa_key("rsa-key-name", size=2048)
@@ -26,9 +28,10 @@ def create_key():
 def retrive_key():
     credential = DefaultAzureCredential()
 
-    key_client = KeyClient(
-        vault_url="https://test-azure.vault.azure.net/", credential=credential
-    )
+    keyVaultName = os.getenv("KEY_VAULT_NAME")
+    KVUri = f"https://{keyVaultName}.vault.azure.net"
+
+    key_client = KeyClient(vault_url=KVUri, credential=credential)
     key = key_client.get_key("ec-key-name")
     print(key.key)
     return jsonify({"key": key.key})
