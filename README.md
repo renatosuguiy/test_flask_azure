@@ -3,7 +3,7 @@
 <h2>Objetivo</h2>
 Este projeto tem como objetivo criar um exemplo de como criar um Azure Function que acessa outros modulos do Azure. Todos os módulos devem estar na mesma conta. 
 
-Para o Azure Fuctions reconhecer os requests, é necessaria a pasta "HadleApproach" e seus arquivos interno e o JSON "host.json". O  "HandleApproach" indica quais são os tipos de requests que a function vai responder e qual função do código ele vai ativar ao receber o request.
+Para o Azure Fuctions reconhecer os requests, é necessaria a pasta "HadleApproach" e seus arquivos interno e o JSON "host.json". O  "HandleApproach" indica quais são os tipos de requests que a function vai responder e qual função do código ele vai ativar ao receber o request. <a href='https://docs.microsoft.com/pt-br/azure/azure-functions/functions-reference-python?tabs=asgi%2Cazurecli-linux%2Capplication-level#programming-model'>Link de referência</a>
 
 <br>
 
