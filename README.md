@@ -8,6 +8,7 @@ Para o Azure Fuctions reconhecer os requests, é necessaria a pasta "HadleApproa
 <br>
 
 <h2>Endpoints</h2>
+<hr>
 
 <br>
 
@@ -57,13 +58,15 @@ Lista os arquivos que estão armazenados no container criado no endpoint anterio
 
 <h3>/test/send_mail_flask</h3>
 <hr>
-Envia um email usando a biblioteca flask-mail. São necessárias as variáveis de ambiente "MAIL_USERNAME" e "MAIL_PASSWORD". O SMTP server usado é do <a href='https://mailtrap.io/'>MailTrap</a>, uma ferramente para testar o envio de emails. Não é recomendado usar provedores de email grátis (gmail, outlook, yahoo...), podem não funcionar. 
+Envia um email usando a biblioteca flask-mail. É necessária a variável de ambiente "MAIL_USERNAME". A senha do email é requisitada de uma secret com nome 'mail-password' que foi previamente criada no KeyVault. O SMTP server usado é do <a href='https://mailtrap.io/'>MailTrap</a>, uma ferramente para testar o envio de emails. Não é recomendado usar provedores de email grátis (gmail, outlook, yahoo...), podem não funcionar. 
 
 <br>
 
 <h3>/test/graph</h3>
 <hr>
 Envia a imagem "fig1.png" armazenada no container criado anteriormente. Será utilizada a biblioteca flask-mail para o envio do email. 
+
+<img src='Diagrama em branco - Página 1.png'>
 
 <br>
 
