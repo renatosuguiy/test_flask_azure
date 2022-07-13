@@ -66,7 +66,7 @@ Envia um email usando a biblioteca flask-mail. É necessária a variável de amb
 <hr>
 Envia a imagem "fig1.png" armazenada no container criado anteriormente. Será utilizada a biblioteca flask-mail para o envio do email. 
 
-<img src='Diagrama em branco - Página 1.png'>
+<img src='Diagrama em branco - Página 1.png' style="height:400px">
 
 <br>
 
